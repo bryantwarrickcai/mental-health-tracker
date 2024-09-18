@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","http://bryant-warrick-mentalhealthtracker.pbp.cs.ui.ac.id", "https://bryant-warrick-mentalhealthtracker.pbp.cs.ui.ac.id"]
 
@@ -25,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jn!3u%287!l3rykhz2^9hk8&95doq&mbiz6$1cu!2x%zx23*!x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+PRODUCTION = os.getenv("PRODUCTION", False)
+DEBUG = not PRODUCTION
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "bryant-warrick-mentalhealthtracker.pbp.cs.ui.ac.id"]
 
